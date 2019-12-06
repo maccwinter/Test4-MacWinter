@@ -100,7 +100,34 @@ ggplot(se, aes(variable, Team)) +
   geom_tile(aes(fill = log10(stat))) + 
   theme(axis.text.x=element_text(angle=90, size = 10)) 
  
+#Section 5: Mapping _____ / 20 points ----- 
+#Using the “sec_stad.Rdata”
+#5. Generate a ‘toner’ map figure showing the central and southeastern United States. (5 points) -----
 
+library(ggmap)
+library(osmdata)
+
+names(sec_stad)
+sec_stad$State
+lonmin <-min(sec_stad[sec_stad$State =='TX',8])
+lonmin
+lonmax <- max(sec_stad[sec_stad$State,8])
+lonmax
+latmin <- min(sec_stad[sec_stad$State,9])
+latmin
+latmax <- max(sec_stad[sec_stad$State,9])
+latmax 
+
+bb <- c(left=lonmin -1, bottom=latmin-1, right=lonmax+1, top=latmax+1)
+
+CSEUSA <- get_stamenmap(bbox = bb, zoom = 5, map = 'toner')
+CSEUSA
+ggmap(CSEUSA)
+
+#6. Generate a second ‘toner’ map figure showing the central and southeastern United States, ----
+#plus the geographic location of all the SEC stadiums (5 points). ---- 
+ggmap(CSEUSA) +
+  geom_point(data =sec_stad, aes(x =lng, y=lat))
 
 
 
