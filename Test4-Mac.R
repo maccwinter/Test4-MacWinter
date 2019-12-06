@@ -81,7 +81,16 @@ ggplot(ts[ts$Conference =='Big Ten Conference',], aes(x =Team, y =Rush.Yard)) +
 #b. Using this subset of data, tell me which team had the most rushing yards, on average? (2 points) ----
 #Minnesota has the most rushing yards, on average. ---- 
 
+#Section 4: Heat Map _____ / 8 points ---- 
+load('football_stats.Rdata')
+#4. For teams in the Southeastern conference, ----
+#generate a heat map with ‘ggplot’ showing each team’s ---- 
+#performance for each statistical variable. (6 points) ---- 
 
+names(football.stats)
+unique(football.stats$Conference)
+se <- football.stats[football.stats$Conference =='Southeastern Conference',]
+se
   
   
 
