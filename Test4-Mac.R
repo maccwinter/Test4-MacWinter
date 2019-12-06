@@ -120,14 +120,31 @@ latmax
 
 bb <- c(left=lonmin -1, bottom=latmin-1, right=lonmax+1, top=latmax+1)
 
-CSEUSA <- get_stamenmap(bbox = bb, zoom = 5, map = 'toner')
+CSEUSA <- get_stamenmap(bbox = bb, zoom = 5, map = 'toner-lite')
 CSEUSA
-ggmap(CSEUSA)
+map1 <- ggmap(CSEUSA) 
+ggsave('map1.png')
+
 
 #6. Generate a second ‘toner’ map figure showing the central and southeastern United States, ----
 #plus the geographic location of all the SEC stadiums (5 points). ---- 
-ggmap(CSEUSA) +
+
+map2 <- ggmap(CSEUSA) +
   geom_point(data =sec_stad, aes(x =lng, y=lat))
+ggsave('map2.png')
+
+#7. Generate a third ‘toner’ map figure showing the geographic location of all the SEC stadiums, ---- 
+#this time represent these locations using the following aesthetics: ---- 
+#d. Size of the points scale with the ‘Capacity’ of each stadium (1 points) ----
+#e. The colors of the points show degree of gradation in ‘Capacity’ among stadiums (3 points)
+map3 <- ggmap(CSEUSA) +
+  geom_point(data =sec_stad, aes(x =lng, y=lat, size = Capacity, colour =Capacity))
+ggsave('map3.png')
+#8. Export and save these three maps as “.png” files. ----
+#Please include them when you upload to Moodle (or email) your exam. ----
+#(6 points total; i.e., 2 points per map file) ---- 
+#See above after each map, also see attached '.png' files!! ---- 
+ ?ggsave
 
 
 
