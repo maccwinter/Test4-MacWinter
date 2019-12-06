@@ -92,6 +92,13 @@ unique(football.stats$Conference)
 se <- football.stats[football.stats$Conference =='Southeastern Conference',]
 se
   
-  
+ggplot(se, aes(variable, Team)) +
+  geom_tile(aes(fill = stat)) + 
+  theme(axis.text.x=element_text(angle=90, size = 10))
+
+
+
+
+
 
 
