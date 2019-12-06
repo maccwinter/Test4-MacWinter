@@ -18,7 +18,7 @@ ggplot(sec_stad) +
   theme(axis.text.x = element_text(size=2))
 
 #a. Flip the axis so that the stadium names are ---- 
-#arranged along the left side of the plot and the values are on the bottom of the plot
+#arranged along the left side of the plot and the values are on the bottom of the plot ----
 
 ggplot(sec_stad) +
   geom_bar(aes(x=Name, y=Capacity), position = 'dodge', stat = 'identity') +
@@ -37,8 +37,8 @@ ggplot(sec_stad) +
 load('team_statistics.Rdata')
 
 #2. Select teams belonging to the Sun Belt Conference from the data set. ---- 
-#Generate a point plot using ‘ggplot’ to illustrate if there is a relationship 
-#between the number of passing yards and the number of rushing yard for each team.
+#Generate a point plot using ‘ggplot’ to illustrate if there is a relationship ----
+#between the number of passing yards and the number of rushing yard for each team.----
 
 library(plyr)
 names(ts)
@@ -58,8 +58,8 @@ SBC <- ddply(.data=sunbelt, .variables = 'Team', function(x){
 
 #Section 3: Box-and-whisker plot _____ / 10 points  ---- 
 
-#Using the “team_statistics.Rdata”
-#3. For teams in the Big 10 Conference, 
+#Using the “team_statistics.Rdata” ----
+#3. For teams in the Big 10 Conference,  ----
 #generate a box-and-whisker plot for rushing yards. (6 points) ---- 
 
 unique(ts$Conference)
@@ -69,7 +69,7 @@ ggplot(ts[ts$Conference =='Big Ten Conference',], aes(x =Team, y =Rush.Yard)) +
   theme(axis.text.x=element_text(angle=90, size = 10)) 
 
 
-#a. Make the panel background dark blue 
+#a. Make the panel background dark blue ----
 #and the fill of the box-and-whiskers bright yellow (2 points) ----
 
 
@@ -101,7 +101,7 @@ ggplot(se, aes(variable, Team)) +
   theme(axis.text.x=element_text(angle=90, size = 10)) 
  
 #Section 5: Mapping _____ / 20 points ----- 
-#Using the “sec_stad.Rdata”
+#Using the “sec_stad.Rdata” ----
 #5. Generate a ‘toner’ map figure showing the central and southeastern United States. (5 points) -----
 
 library(ggmap)
@@ -152,8 +152,8 @@ detach(package:plyr)
 maxcap <- sec_stad %>% group_by(State) %>% summarise(max = max(Capacity))
 maxcap
 #In Tenessee (TN), the there is the largest capacity stadium, which holds 104079 (i'm assuming people)----
-#10. What is the mean and standard deviation capacity of the stadiums 
-#in each state? (Hint: you may need to use detach(package:plyr) ) (2 points)
+#10. What is the mean and standard deviation capacity of the stadiums ----
+#in each state? (Hint: you may need to use detach(package:plyr) ) (2 points) ----
 
 mn.stdv <- sec_stad %>% group_by(State) %>% summarise(meancapacity = mean(Capacity), stdvCapacity = sd(Capacity))
 mn.stdv
