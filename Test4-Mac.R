@@ -145,6 +145,35 @@ ggsave('map3.png')
 #(6 points total; i.e., 2 points per map file) ---- 
 #See above after each map, also see attached '.png' files!! ---- 
  ?ggsave
+#Section 6: Analysis _____ / 4 points ---- 
+#9. In which state is the largest capacity stadium located? (2 points) ---- 
+library(tidyverse)
+detach(package:plyr)
+maxcap <- sec_stad %>% group_by(State) %>% summarise(max = max(Capacity))
+maxcap
+#In Tenessee (TN), the there is the largest capacity stadium, which holds 104079 (i'm assuming people)----
+#10. What is the mean and standard deviation capacity of the stadiums 
+#in each state? (Hint: you may need to use detach(package:plyr) ) (2 points)
+
+mn.stdv <- sec_stad %>% group_by(State) %>% summarise(meancapacity = mean(Capacity), stdvCapacity = sd(Capacity))
+mn.stdv
+
+# State meancapacity stdvCapacity
+#<fct>        <dbl>        <dbl>
+#  1 AL          64366.       27839.
+#2 AR          52230.       20559.
+#3 FL          55973.       27090.
+#4 GA          72999.       18934.
+#5 KY          54803        18106.
+#6 LA          47934.       24498.
+#7 MS          52310.       13132.
+#8 TN          60804        28534.
+#9 TX          51130.       19893.
+#10 WV          50758        18020.
+
+
+
+
 
 
 
