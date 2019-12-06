@@ -54,8 +54,32 @@ SBC <- ddply(.data=sunbelt, .variables = 'Team', function(x){
     ggtitle(t)
   ggsave(filename= paste0(t,'.tiff'),plot=rlshp, width =4, height=3, units='in',
          dpi=600, compression = 'lzw') }, .progress ='text')
-  
 
+
+#Section 3: Box-and-whisker plot _____ / 10 points  ---- 
+
+#Using the “team_statistics.Rdata”
+#3. For teams in the Big 10 Conference, 
+#generate a box-and-whisker plot for rushing yards. (6 points) ---- 
+
+unique(ts$Conference)
+
+ggplot(ts[ts$Conference =='Big Ten Conference',], aes(x =Team, y =Rush.Yard)) +
+  geom_boxplot() +
+  theme(axis.text.x=element_text(angle=90, size = 10)) 
+
+
+#a. Make the panel background dark blue 
+#and the fill of the box-and-whiskers bright yellow (2 points) ----
+
+
+ggplot(ts[ts$Conference =='Big Ten Conference',], aes(x =Team, y =Rush.Yard)) +
+  geom_boxplot(fill = 'yellow', outlier.color = 'yellow') +
+  theme(axis.text.x=element_text(angle=90, size = 10), 
+        panel.background = element_rect(fill='navy')) 
+
+#b. Using this subset of data, tell me which team had the most rushing yards, on average? (2 points) ----
+#Minnesota has the most rushing yards, on average. ---- 
 
 
   
