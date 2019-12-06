@@ -95,6 +95,11 @@ se
 ggplot(se, aes(variable, Team)) +
   geom_tile(aes(fill = stat)) + 
   theme(axis.text.x=element_text(angle=90, size = 10))
+#c. Plot the log-10 transformed values for the color scale. (2 points) ---- 
+ggplot(se, aes(variable, Team)) +
+  geom_tile(aes(fill = log10(stat))) + 
+  theme(axis.text.x=element_text(angle=90, size = 10)) 
+ 
 
 
 
